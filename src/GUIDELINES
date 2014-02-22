@@ -1,0 +1,6 @@
+Namespace
+	generally use the name of the src subfolder to name namespace
+Headers 
+	include guard naming convention follows boost: 
+		NAMESPACE_FILENAME_HPP
+	use .cpp .hpp extension for C++ class and header files

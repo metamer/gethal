@@ -13,4 +13,4 @@
 *.a
 
 #Compiled binaries
-bin/*
+bin/

@@ -1,6 +1,8 @@
 CFLAGS=
 DEF=
 
+test: hello boost
+
 hello: helloworld.cpp 
 	g++ helloworld.cpp -o ../bin/helloworld $(CFLAGS) $(DEF)
 boost: boosttest.cpp

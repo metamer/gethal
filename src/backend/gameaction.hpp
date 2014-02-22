@@ -4,8 +4,8 @@
  *
 */
 
-#ifndef BACKEND_GAMESTATE_HPP
-#define BACKEND_GAMESTATE_HPP
+#ifndef BACKEND_GAMEACTION_HPP
+#define BACKEND_GAMEACTION_HPP
 
 
 namespace backend{

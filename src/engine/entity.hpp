@@ -4,8 +4,8 @@
  *
 */
 
-#ifndef ENGINE_ENGINE_HPP
-#define ENGINE_ENGINE_HPP
+#ifndef ENGINE_ENTITY_HPP
+#define ENGINE_ENTITY_HPP
 
 
 namespace engine{

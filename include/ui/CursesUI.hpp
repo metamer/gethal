@@ -18,6 +18,6 @@ namespace UI{
 				private:
 						void clear();
 
-		}
+		};
 }
 #endif

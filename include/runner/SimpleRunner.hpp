@@ -16,8 +16,7 @@ namespace runner{
 	class SimpleRunner : Runner{
 		public:
 				SimpleRunner(ui::UI& ui);	
-				Runner::runGame();
-	}
+	};
 
 }
 #endif

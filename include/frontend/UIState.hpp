@@ -17,6 +17,6 @@ namespace frontend{
 					const GameMap& gameMap;
 					UIState(const GameMap& gameMap);
 						
-		}
+		};
 }
 #endif

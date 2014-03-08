@@ -16,6 +16,6 @@ namespace runner{
 			private:
 					ui::UI& ui;
 					
-	}
+	};
 }
 #endif

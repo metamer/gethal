@@ -12,7 +12,7 @@ namespace frontend{
 	class UIComponent{
 		public:
 			bool needsRedraw;
-	}
+	};
 
 }
 #endif

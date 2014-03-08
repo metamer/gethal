@@ -1,7 +1,11 @@
 CFLAGS=
+CFLAGS=
 DEF=
 
-test: hello boost
+test:  simplegame
+
+simplegame: simplegame.cpp
+	g++ simplegame.cpp -o ../bin/simplegame -I ../include/ $(CFLAGS) $(DEF)
 
 hello: helloworld.cpp 
 	g++ helloworld.cpp -o ../bin/helloworld $(CFLAGS) $(DEF)

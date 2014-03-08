@@ -19,7 +19,7 @@ namespace frontend{
 				YELLOW,
 				WHITE,
 				DEFAULT
-		}
+		};
 
 }
 #endif

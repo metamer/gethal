@@ -13,6 +13,6 @@ namespace frontend{
 		NORMAL,
 		BOLD,
 		REVERSE
-	}
+	};
 }
 #endif

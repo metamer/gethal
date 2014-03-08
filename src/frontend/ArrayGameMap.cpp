@@ -16,7 +16,7 @@ namespace frontend{
 	}
 
 
-	const GameMapEntry& get_entry(int row, int col){ 
+	const GameMapEntry& GameMap::get_entry(int row, int col){ 
 		if(!check_bounds(row,col)){
 			throw all::FrontendException();
 		}

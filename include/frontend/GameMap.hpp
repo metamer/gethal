@@ -18,6 +18,6 @@ namespace frontend{
 				protected:
 					int width, height;
 						
-		}
+		};
 }
 #endif

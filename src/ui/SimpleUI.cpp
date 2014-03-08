@@ -1,11 +1,14 @@
 #include "ui/UI.hpp"
+#include "ui/SimpleUI.hpp"
 
 namespace ui{
-		void UI::set_uiState(const uiState&){
-			this.uiState = uiState;
+		
+
+		void SimpleUI::set_uiState(const uiState&){
+			this.uiState = &uiState;
 		}
 
-		void UI::draw_uiState(){
+		void SimpleUI::draw_uiState(){
 
 			const frontend::GameMap& gm  = uiState->gameMap;
 			
@@ -25,7 +28,7 @@ namespace ui{
 
 		}
 
-		void UI::init(){
+		void SimpleUI::init(){
 		}
 
 }

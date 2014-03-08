@@ -20,6 +20,6 @@ namespace frontend{
 						const GameMapEntry& defaultGme;
 						std::vector < std::vector <GameMapEntry&> > map;
 						bool check_bounds(int row, int col);
-		}
+		};
 }
 #endif

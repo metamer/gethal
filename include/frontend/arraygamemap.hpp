@@ -4,8 +4,8 @@
  *
 */
 
-#ifndef FRONTEND_UISTATE_HPP
-#define FRONTEND_UISTATE_HPP
+#ifndef FRONTEND_ARRAYGAMEMAP_HPP
+#define FRONTEND_ARRAYGAMEMAP_HPP
 
 
 namespace frontend{

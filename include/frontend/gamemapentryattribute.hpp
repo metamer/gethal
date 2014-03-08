@@ -9,6 +9,10 @@
 
 
 namespace frontend{
-
+	enum GameMapEntryAttribute{
+		NORMAL,
+		BOLD,
+		REVERSE
+	}
 }
 #endif

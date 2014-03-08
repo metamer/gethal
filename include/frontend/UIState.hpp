@@ -7,16 +7,15 @@
 #ifndef FRONTEND_UISTATE_HPP
 #define FRONTEND_UISTATE_HPP
 
-#include "<vector>"
-#include "<string>"
-#include "all/GameMessage.hpp"
+#include "frontend/GameMap.hpp"
 
 
 namespace frontend{
 		class UIState{
 				private:
-						std::vector<std::string> messages;
 				public:
+					const GameMap& gameMap;
+					UIState(const GameMap& gameMap);
 						
 		}
 }

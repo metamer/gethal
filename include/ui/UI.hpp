@@ -9,12 +9,14 @@
 
 #include "frontend/UIState.hpp"
 
-namespace UI{
+namespace ui{
 		class UI{
 				public:
-						virtual void set_uistate(const uistate&) =0;
-						virtual void draw_uistate() =0;
-						virtual void init_uistate() =0;
+						virtual void set_uiState(const frontend::UIState uiState&) =0;
+						virtual void draw_uiState() =0;
+						virtual void init() =0;
+				protected:
+						const frontend::UIState& uiState;
 		};
 }
 #endif

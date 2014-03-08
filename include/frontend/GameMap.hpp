@@ -8,9 +8,10 @@
 #define FRONTEND_GAMEMAP_HPP
 
 #include "frontend/GameMapEntry.hpp"
+#include "frontend/UIComponent.hpp"
 
 namespace frontend{
-		class gamemap{
+		class GameMap : UIComponent{
 				public:
 					virtual void set_entry(int row, int col, const GameMapEntry& gm ); 
 					virtual const GameMapEntry& get_entry(int row, int col); 

@@ -12,9 +12,9 @@
 namespace UI{
 		class CursesUI : public UI{
 				public:
-						void set_uistate();
-						void draw_uistate();
-						void init_uistate();
+						void set_uiState();
+						void draw_uiState();
+						void init_uiState();
 				private:
 						void clear();
 

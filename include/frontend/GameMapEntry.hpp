@@ -12,14 +12,13 @@
 
 
 namespace frontend{
+		//POD type
 		class GameMapEntry{
 				public:
-						int xdim, ydim;
 						char symbol;
 						GameMapEntryColor color_fg, color_bg;
-						GameMapEntryAttribute attribute;
-						GameMapEntry(int xdim, int ydim, char symbol, GameMapEntryColor color_fg, GameMapEntryColor color_bg);
-						GameMapEntry(int xdim, int ydim, char symbol, GameMapEntryColor color_fg, GameMapEntryColor color_bg, GameMapEntryAttribute attribute);
+						GameMapEntryAttribute attribute ;
+						GameMapEntry(char symbol, GameMapEntryColor color_fg, GameMapEntryColor color_bg, GameMapEntryAttribute attribute);
 		}
 
 }

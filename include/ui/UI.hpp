@@ -7,10 +7,10 @@
 #ifndef UI_UI_HPP
 #define UI_UI_HPP
 
-#include "frontend/uistate.hpp"
+#include "frontend/UIState.hpp"
 
-namespace ui{
-		class ui{
+namespace UI{
+		class UI{
 				public:
 						virtual void set_uistate(const uistate&) =0;
 						virtual void draw_uistate() =0;

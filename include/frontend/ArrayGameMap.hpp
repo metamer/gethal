@@ -9,6 +9,9 @@
 
 
 namespace frontend{
+		public:
+			ArrayGameMap(int x, int y);
+			ArrayGameMap(int x, int y, const GameMapEntry& defaultGme);
 
 }
 #endif

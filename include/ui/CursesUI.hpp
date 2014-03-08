@@ -7,10 +7,10 @@
 #ifndef UI_CURSESUI_HPP
 #define UI_CURSESUI_HPP
 
-#include "ui/ui.hpp" 
+#include "ui/UI.hpp" 
 
-namespace ui{
-		class cursesui : public ui{
+namespace UI{
+		class CursesUI : public UI{
 				public:
 						void set_uistate();
 						void draw_uistate();

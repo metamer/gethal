@@ -9,11 +9,11 @@
 
 #include "<vector>"
 #include "<string>"
-#include "frontend/gamemessage.hpp"
+#include "all/GameMessage.hpp"
 
 
 namespace frontend{
-		class uistate{
+		class UIState{
 				private:
 						std::vector<std::string> messages;
 				public:

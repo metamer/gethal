@@ -1,5 +1,4 @@
-CFLAGS=
-CFLAGS=
+CFLAGS= -Wall
 DEF=
 
 test:  simplegame

@@ -9,7 +9,7 @@
 
 #include "ui/UI.hpp" 
 
-namespace UI{
+namespace ui{
 		class CursesUI : public UI{
 				public:
 						void set_uiState();

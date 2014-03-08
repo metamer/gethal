@@ -14,7 +14,7 @@ namespace runner{
 			public:
 					virtual void run_game() = 0;
 			private:
-					ui::UI& ui;
+					ui::UI* ui;
 					
 	};
 }

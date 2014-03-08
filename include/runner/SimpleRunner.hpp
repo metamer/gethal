@@ -15,6 +15,7 @@
 namespace runner{
 	class SimpleRunner : Runner{
 		public:
+				virtual void run_game();
 				SimpleRunner(ui::UI& ui);	
 	};
 

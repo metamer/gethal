@@ -14,7 +14,7 @@ namespace frontend{
 		class UIState{
 				private:
 				public:
-					const GameMap& gameMap;
+					const GameMap* gameMap;
 					UIState(const GameMap& gameMap);
 						
 		};

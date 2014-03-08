@@ -2,6 +2,6 @@
 
 namespace frontend{
 	UIState::UIState(const GameMap& gameMap){
-		this.gameMap = gameMap;
+		this->gameMap = &gameMap;
 	}
 }

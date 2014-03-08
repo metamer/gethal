@@ -18,6 +18,7 @@ namespace frontend{
 						char symbol;
 						GameMapEntryColor color_fg, color_bg;
 						GameMapEntryAttribute attribute ;
+						GameMapEntry();
 						GameMapEntry(char symbol, GameMapEntryColor color_fg, GameMapEntryColor color_bg, GameMapEntryAttribute attribute);
 		};
 

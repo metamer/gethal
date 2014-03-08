@@ -13,7 +13,7 @@
 #include "ui/UI.hpp"
 
 namespace runner{
-	class SimpleRunner : Runner{
+	class SimpleRunner : public Runner{
 		public:
 				virtual void run_game();
 				SimpleRunner(ui::UI& ui);	

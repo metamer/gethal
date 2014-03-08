@@ -3,14 +3,14 @@
 namespace runner{
 
 	SimpleRunner::SimpleRunner(ui::UI& ui){
-		this.ui = &ui;
-	};
+		this->ui = &ui;
+	}
 
-	virtual void Runner::run_game(){
-	    frontend::GameMapEntry def = frontend::GameMapEntry('x');
-		GameMap gm = GameMap(10,10, def);
+	void SimpleRunner::run_game(){
+	    frontend::GameMapEntry def = frontend::GameMapEntry();
+		frontend::GameMap gm = frontend::GameMap(10,10, def);
 		frontend::UIState uis = frontend::UIState(gm);
 		(*ui).set_uiState(uis);
 		(*ui).draw_uiState();
-	};
+	}
 }

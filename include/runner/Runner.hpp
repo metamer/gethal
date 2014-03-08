@@ -13,7 +13,7 @@ namespace runner{
 	class Runner{
 			public:
 					virtual void run_game() = 0;
-			private:
+			protected:
 					ui::UI* ui;
 					
 	};

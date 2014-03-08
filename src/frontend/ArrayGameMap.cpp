@@ -4,7 +4,7 @@ namespace frontend{
 	ArrayGameMap::ArrayGameMap(int width, int height, const GameMapEntry& defaultGme){
 		this->width=width;
 		this->height=height;
-		this->map(width,std::vector <const GameMapEntry*> (height));
+		//this->map(width,std::vector <const GameMapEntry*> (height));
 		this->defaultGme = &defaultGme;
 	}
 

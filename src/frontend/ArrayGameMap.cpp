@@ -16,14 +16,14 @@ namespace frontend{
 	}
 
 
-	const GameMapEntry& ArrayGameMap::get_entry(int row, int col){ 
+	const GameMapEntry& ArrayGameMap::get_entry(int row, int col) const{ 
 		if(!check_bounds(row,col)){
 			throw all::FrontendException();
 		}
 		return *(this->map[row][col]);
 	}
 	
-	bool ArrayGameMap::check_bounds(int row, int col){
+	bool ArrayGameMap::check_bounds(int row, int col) const{
 			return (height >= row  || width >= col);
 	}
 }

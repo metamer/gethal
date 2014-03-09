@@ -7,7 +7,7 @@ OBJS := $(addprefix $(OBJDIR)/,\
 			ui/SimpleUI.o\
 			runner/SimpleRunner.o)
 BINDIR=../bin
-CFLAGS= -Wall
+CFLAGS= -Wall -g
 OBJFLAGS= -c
 DEF=
 test: simplegame

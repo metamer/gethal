@@ -4,7 +4,20 @@ namespace frontend{
 	ArrayGameMap::ArrayGameMap(int width, int height, const GameMapEntry& defaultGme){
 		this->width=width;
 		this->height=height;
-		//this->map(width,std::vector <const GameMapEntry*> (height));
+		this->map= std::vector< std::vector <const GameMapEntry*> >(width);
+
+		for(int i = 0 ; i< width ; i++){
+			std::vector<const GameMapEntry*> column(height);
+			map[i]=column;
+		}
+
+		for(int i = 0; i<width; i++){
+			for(int j = 0; j<height; j++){
+				set_entry(i,j,defaultGme);
+			}
+		}
+
+
 		this->defaultGme = &defaultGme;
 	}
 
@@ -20,7 +33,7 @@ namespace frontend{
 		if(!check_bounds(row,col)){
 			throw all::FrontendException();
 		}
-		return *(this->map[row][col]);
+		return *(map[row][col]);
 	}
 	
 	bool ArrayGameMap::check_bounds(int row, int col) const{

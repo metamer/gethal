@@ -1,14 +1,38 @@
+COMPILER=g++
+HPPDIR=../include
+INCLUDE= -I $(HPPDIR)/
+OBJDIR := ../obj
+OBJS := $(addprefix $(OBJDIR)/,\
+			frontend/ArrayGameMap.o frontend/GameMapEntry.o frontend/UIState.o\
+			ui/SimpleUI.o\
+			runner/SimpleRunner.o)
+BINDIR=../bin
 CFLAGS= -Wall
+OBJFLAGS= -c
 DEF=
+test: simplegame
 
-test:  simplegame
-
-simplegame: simplegame.cpp
-	g++ simplegame.cpp -o ../bin/simplegame -I ../include/ $(CFLAGS) $(DEF)
+simplegame: simplegame.cpp objects
+	g++ simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/SimpleUI.o $(OBJDIR)/ui/SimpleUI.o $(INCLUDE) $(CFLAGS) $(DEF)
 
 hello: helloworld.cpp 
-	g++ helloworld.cpp -o ../bin/helloworld $(CFLAGS) $(DEF)
+	g++ helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)
 boost: boosttest.cpp
-	g++ boosttest.cpp -o ../bin/boosttest $(CFLAGS) $(DEF)
+	g++ boosttest.cpp -o $(BINDIR)/boosttest $(CFLAGS) $(DEF)
 clean:
-	rm -rf ../bin/*
+	rm -rf $(BINDIR)/*
+	rm -rf $(OBJDIR)/*
+
+$(OBJDIR)/%.o : %.cpp
+	$(COMPILER) $(INCLUDE) $(CFLAGS) $(OBJFLAGS) $(DEF) -o $@ $<
+
+objects: $(OBJS)
+
+$(OBJS): | $(OBJDIR)/frontend $(OBJDIR)/ui $(OBJDIR)/runner
+
+$(OBJDIR)/frontend:
+	mkdir $(OBJDIR)/frontend
+$(OBJDIR)/runner:
+	mkdir $(OBJDIR)/runner
+$(OBJDIR)/ui:
+	mkdir $(OBJDIR)/ui

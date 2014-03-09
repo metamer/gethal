@@ -8,9 +8,9 @@
 #define RUNNER_SIMPLERUNNER_HPP
 
 #include "runner/Runner.hpp"
+#include "frontend/ArrayGameMap.hpp"
 #include "frontend/GameMapEntry.hpp"
 #include "frontend/UIState.hpp"
-#include "ui/UI.hpp"
 
 namespace runner{
 	class SimpleRunner : public Runner{

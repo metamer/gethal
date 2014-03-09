@@ -8,7 +8,7 @@ namespace runner{
 
 	void SimpleRunner::run_game(){
 	    frontend::GameMapEntry def = frontend::GameMapEntry();
-		frontend::GameMap gm = frontend::GameMap(10,10, def);
+		const frontend::GameMap& gm = frontend::ArrayGameMap(10,10, def);
 		frontend::UIState uis = frontend::UIState(gm);
 		(*ui).set_uiState(uis);
 		(*ui).draw_uiState();

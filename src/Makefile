@@ -13,7 +13,7 @@ DEF=
 test: simplegame
 
 simplegame: simplegame.cpp objects
-	g++ simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/SimpleUI.o $(OBJDIR)/ui/SimpleUI.o $(INCLUDE) $(CFLAGS) $(DEF)
+	g++ simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/*.o $(INCLUDE) $(CFLAGS) $(DEF)
 
 hello: helloworld.cpp 
 	g++ helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)

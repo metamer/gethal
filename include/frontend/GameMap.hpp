@@ -13,11 +13,8 @@
 namespace frontend{
 		class GameMap : public UIComponent{
 				public:
-					virtual void set_entry(int row, int col, const GameMapEntry& gm ); 
-					virtual const GameMapEntry& get_entry(int row, int col); 
-				protected:
-					int width, height;
-						
+						virtual void set_entry(int row, int col, const GameMapEntry& gm )=0; 
+						virtual const GameMapEntry& get_entry(int row, int col) =0;
 		};
 }
 #endif

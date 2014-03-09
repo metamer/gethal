@@ -12,6 +12,7 @@ namespace frontend{
 	class UIComponent{
 		public:
 			bool needsRedraw;
+			int width, height;
 	};
 
 }

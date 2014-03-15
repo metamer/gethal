@@ -17,7 +17,7 @@ namespace ui{
 					int maxCols = gm->height;
 
 					for(int i = 0; i< maxRows; i++){
-							for(int j = 0; j< maxRows; j++){
+							for(int j = 0; j< maxCols; j++){
 								const char c = gm->get_entry(i,j).symbol;
 								std::cout<<c;
 							}

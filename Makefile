@@ -1,29 +1,30 @@
 COMPILER=g++
-HPPDIR=../include
+HPPDIR=include
 INCLUDE= -I $(HPPDIR)/
-OBJDIR := ../obj
+OBJDIR :=obj
 OBJS := $(addprefix $(OBJDIR)/,\
 			frontend/ArrayGameMap.o frontend/GameMapEntry.o frontend/UIState.o\
 			ui/SimpleUI.o\
 			runner/SimpleRunner.o)
-BINDIR=../bin
+BINDIR=bin
+SRCDIR=src
 CFLAGS= -Wall -g
 OBJFLAGS= -c
 DEF=
 test: simplegame
 
-simplegame: simplegame.cpp objects
-	g++ simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/*.o $(INCLUDE) $(CFLAGS) $(DEF)
+simplegame: $(SRCDIR)/simplegame.cpp objects
+	g++ $(SRCDIR)/simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/*.o $(INCLUDE) $(CFLAGS) $(DEF)
 
-hello: helloworld.cpp 
-	g++ helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)
-boost: boosttest.cpp
-	g++ boosttest.cpp -o $(BINDIR)/boosttest $(CFLAGS) $(DEF)
+hello: $(SRCDIR)/helloworld.cpp
+	g++ $(SRCDIR)/helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)
+boost: $(SRCDIR)/boosttest.cpp
+	g++ $(SRCDIR)/boosttest.cpp -o $(BINDIR)/boosttest $(CFLAGS) $(DEF)
 clean:
 	rm -rf $(BINDIR)/*
 	rm -rf $(OBJDIR)/*
 
-$(OBJDIR)/%.o : %.cpp
+$(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	$(COMPILER) $(INCLUDE) $(CFLAGS) $(OBJFLAGS) $(DEF) -o $@ $<
 
 objects: $(OBJS)

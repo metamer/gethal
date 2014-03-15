@@ -2,6 +2,7 @@
 
 namespace frontend{
 	ArrayGameMap::ArrayGameMap(int width, int height, const GameMapEntry& defaultGme){
+		this->needsRedraw=true;
 		this->width=width;
 		this->height=height;
 		this->map= std::vector< std::vector <const GameMapEntry*> >(width);

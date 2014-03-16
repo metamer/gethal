@@ -1,31 +1,36 @@
 COMPILER=g++
 HPPDIR=include
-INCLUDE= -I $(HPPDIR)/
+INCLUDE= -I $(HPPDIR)/ -I /usr/include/noteye
 OBJDIR :=obj
 OBJS := $(addprefix $(OBJDIR)/,\
 			frontend/ArrayGameMap.o frontend/GameMapEntry.o frontend/UIState.o\
-			ui/SimpleUI.o\
+			ui/SimpleUI.o ui/NotEyeUI.o\
 			runner/SimpleRunner.o)
 BINDIR=bin
 SRCDIR=src
 CFLAGS= -Wall -g
 OBJFLAGS= -c
-DEF=
-test: simplegame
+DEF= -DCPLUSPLUS 
+LIBS= -L/usr/lib/noteye
+
+all: simplegame graphicalgame
 
 simplegame: $(SRCDIR)/simplegame.cpp objects
-	g++ $(SRCDIR)/simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/*.o $(INCLUDE) $(CFLAGS) $(DEF)
+	$(COMPILER) $(SRCDIR)/simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/SimpleUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS)
+
+graphicalgame: $(SRCDIR)/graphicalgame.cpp objects
+	$(COMPILER) $(SRCDIR)/graphicalgame.cpp -o $(BINDIR)/graphicalgame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/NotEyeUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lnoteye -lz -lcurses
 
 hello: $(SRCDIR)/helloworld.cpp
-	g++ $(SRCDIR)/helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)
+	$(COMPILER) $(SRCDIR)/helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)
 boost: $(SRCDIR)/boosttest.cpp
-	g++ $(SRCDIR)/boosttest.cpp -o $(BINDIR)/boosttest $(CFLAGS) $(DEF)
+	$(COMPILER) $(SRCDIR)/boosttest.cpp -o $(BINDIR)/boosttest $(CFLAGS) $(DEF)
 clean:
 	rm -rf $(BINDIR)/*
 	rm -rf $(OBJDIR)/*
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
-	$(COMPILER) $(INCLUDE) $(CFLAGS) $(OBJFLAGS) $(DEF) -o $@ $<
+	$(COMPILER) $(INCLUDE) $(CFLAGS) $(OBJFLAGS) $(LIBS) $(DEF) -o $@ $<
 
 objects: $(OBJS)
 

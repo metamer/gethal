@@ -11,7 +11,8 @@ namespace runner{
 		def.symbol='.';
 		const frontend::GameMap& gm = frontend::ArrayGameMap(12,18, def);
 		frontend::UIState uis = frontend::UIState(gm);
-		(*ui).set_uiState(uis);
-		(*ui).draw_uiState();
+		ui->init();
+		ui->set_uiState(uis);
+		ui->draw_uiState();
 	}
 }

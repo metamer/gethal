@@ -18,6 +18,7 @@ namespace frontend{
 						virtual void set_entry(int row, int col, const GameMapEntry& gm ); 
 						virtual const GameMapEntry& get_entry(int row, int col) const; 
 						ArrayGameMap(int width, int height, const GameMapEntry& defaultGme);
+						~ArrayGameMap();
 				private:
 						const GameMapEntry* defaultGme;
 						std::vector < std::vector <const GameMapEntry*> > map;

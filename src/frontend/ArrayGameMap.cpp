@@ -12,14 +12,25 @@ namespace frontend{
 			map[i]=column;
 		}
 
+		//instantiate gamemapentries
 		for(int i = 0; i<width; i++){
 			for(int j = 0; j<height; j++){
-				set_entry(i,j,defaultGme);
+				GameMapEntry* gme_p = new GameMapEntry(defaultGme);
+				set_entry(i,j,*gme_p);
 			}
 		}
 
 
 		this->defaultGme = &defaultGme;
+	}
+
+	ArrayGameMap::~ArrayGameMap(){
+		//delete gamemapentries that were created upon construction
+		for(int i = 0; i<width; i++){
+			for(int j = 0; j<height; j++){
+				delete (map[i][j]);
+			}
+		}
 	}
 
 	void ArrayGameMap::set_entry(int row, int col, const GameMapEntry& gm){

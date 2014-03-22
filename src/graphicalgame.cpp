@@ -30,16 +30,16 @@ int main(int argc, char *argv[]){
 
 		std::cout<<"Setting noteye_dir to "<<noteye_dir<<std::endl;
 
-		//default to usersubdir of noteye_dir
-		noteye_user_dir=noteye_dir+"/user";
 
 		if(argc>2 ){
 				noteye_user_dir=args[1];
 		}else if (noteye_user_dir_env!=0){
 				noteye_user_dir.assign(noteye_user_dir_env);	
-		}else if (user_home_dir_env!=0){
+		}else if (user_home_dir_env!=0){//default install location
 				noteye_user_dir.assign(user_home_dir_env);
 				noteye_user_dir+=("/.config/noteye");
+		}else{//if user home is not set
+				noteye_user_dir=noteye_dir+"/user";
 		}
 		std::cout<<"Setting noteye_user_dir to "<<noteye_user_dir<<std::endl;	
 

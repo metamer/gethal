@@ -1,0 +1,74 @@
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:SDL_Init
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   ...
+   fun:noteye_halt
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:noteye*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/liblua5.1.so.5.1.5
+   ...
+   }
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   ...
+   fun:_Znwm
+   ...
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:_Znwm
+   fun:_ZNSs4_Rep9_S_createEmmRKSaIcE
+   fun:_ZNSs9_M_mutateEmmm
+   fun:_ZNSs15_M_replace_safeEmmPKcm
+   fun:_ZN6noteye13lh_imagealiasEP9lua_State
+   obj:/usr/lib/liblua5.1.so.5.1.5
+   obj:/usr/lib/liblua5.1.so.5.1.5
+   obj:/usr/lib/liblua5.1.so.5.1.5
+   fun:lua_call
+   obj:/usr/lib/liblua5.1.so.5.1.5
+   obj:/usr/lib/liblua5.1.so.5.1.5
+   obj:/usr/lib/liblua5.1.so.5.1.5
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:*alloc
+   ...
+   obj:/usr/lib/libasound.so.2.0.0
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:_Znwm
+   ...
+}

@@ -33,4 +33,8 @@ namespace ui{
 		void SimpleUI::finish(){
 		}
 
+		bool SimpleUI::process_input(){
+			return false;
+		}
+
 }

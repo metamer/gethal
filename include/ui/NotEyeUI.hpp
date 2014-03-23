@@ -22,7 +22,11 @@ namespace ui{
 						virtual void set_uiState(const frontend::UIState& uiState);
 						virtual void draw_uiState();
 						virtual void init();
+						virtual void init(bool for_restart);
 						virtual void finish();
+						virtual void finish(bool for_restart);
+						virtual void restart();
+						virtual bool process_input();
 				private:
 						std::string noteye_dir;
 						std::string noteye_user_dir;

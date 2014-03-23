@@ -44,14 +44,12 @@ int main(int argc, char *argv[]){
 		std::cout<<"Setting noteye_user_dir to "<<noteye_user_dir<<std::endl;	
 
 		ui::NotEyeUI sui = ui::NotEyeUI(noteye_dir,noteye_user_dir) ;
-		runner::SimpleRunner sr = runner::SimpleRunner(sui);
+		sui.init();
 
+		runner::SimpleRunner sr = runner::SimpleRunner(sui);
 		sr.run_game();
+		
 		// tell the script that the game is finished
-		noteye::noteye_finishinternal(1);
-		// close the UI thread
-		noteye::noteye_uifinish();
-		// finish NotEye (this also exits the process)
-		noteye::noteye_halt();
+		sui.finish();
 		std::cout<<"End Graphical Game"<<std::endl;
 }

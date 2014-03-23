@@ -30,6 +30,10 @@ namespace ui{
 				private:
 						std::string noteye_dir;
 						std::string noteye_user_dir;
+						static int HEADER_ROW_OFFSET;
+						static int HEADER_COLUMN_OFFSET;
+						static int MESSAGE_LIMIT;
+						static int MESSAGE_MAP_COLUMN_OFFSET;
 		};
 }
 #endif

@@ -3,6 +3,11 @@ using namespace noteye;
 
 namespace ui{
 
+		int NotEyeUI::HEADER_ROW_OFFSET=2;
+		int NotEyeUI::HEADER_COLUMN_OFFSET=2;
+		int NotEyeUI::MESSAGE_LIMIT=5;
+		int NotEyeUI::MESSAGE_MAP_COLUMN_OFFSET=7;
+
 		NotEyeUI::NotEyeUI(std::string noteye_dir,std::string noteye_user_dir){
 				this->noteye_dir=noteye_dir;
 				this->noteye_user_dir=noteye_user_dir;
@@ -15,19 +20,29 @@ namespace ui{
 		void NotEyeUI::draw_uiState(){
 
 				const frontend::GameMap* gm  = uiState->gameMap;
+				int maxRows = gm->width;
+				int maxCols = gm->height;
 
 				if(gm->needsRedraw){
 
-						int maxRows = gm->width;
-						int maxCols = gm->height;
 
 						for(int i = 0; i< maxRows; i++){
 								for(int j = 0; j< maxCols; j++){
-										noteye_move(i,j);
+										noteye_move(i+HEADER_ROW_OFFSET,j+HEADER_COLUMN_OFFSET);
 										const char c = gm->get_entry(i,j).symbol;
 										noteye_addch(c);
 								}
 						}
+				}
+
+				std::vector<const all::GameMessage*> msg_vec= uiState->game_messages;
+
+				int messages_added=0;
+
+				for(std::vector<const all::GameMessage*>::iterator it =msg_vec.begin() ; it != msg_vec.end() && messages_added <=MESSAGE_LIMIT ; it++){
+						noteye_move(messages_added+HEADER_ROW_OFFSET+messages_added,maxCols+HEADER_COLUMN_OFFSET+MESSAGE_MAP_COLUMN_OFFSET);
+						noteye_addstr((**it).message_text.c_str());
+						messages_added++;
 				}
 		}
 		bool NotEyeUI::process_input(){
@@ -61,10 +76,10 @@ namespace ui{
 
 		}
 
+
 		void NotEyeUI::init(){
 				init(false);
 		}
-
 		void NotEyeUI::init(bool for_restart){
 
 				int argc=0;
@@ -102,11 +117,9 @@ namespace ui{
 		}
 
 
-
-		void  NotEyeUI::finish(){
-			finish(false);
+		void NotEyeUI::finish(){
+				finish(false);
 		}
-
 		void  NotEyeUI::finish(bool for_restart){
 				if(!for_restart){
 						noteye_finishinternal(1);

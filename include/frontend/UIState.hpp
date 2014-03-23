@@ -18,6 +18,7 @@ namespace frontend{
 					const GameMap* gameMap;
 					std::vector<const all::GameMessage*> game_messages;
 					UIState(const GameMap& gameMap);
+					~UIState();
 						
 		};
 }

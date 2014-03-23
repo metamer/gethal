@@ -15,9 +15,7 @@ namespace all{
 	class GameMessage{
 
 		public:
-			GameMessage(std::string message_text, GameMessageType message_type);
-
-		private:
+			GameMessage(std::string message_text="Message", GameMessageType message_type=SYSTEM);
 			std::string message_text;
 			GameMessageType message_type;
 			

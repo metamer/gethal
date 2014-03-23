@@ -16,10 +16,10 @@ LIBS= -L/usr/lib/noteye
 all: simplegame graphicalgame
 
 simplegame: $(SRCDIR)/simplegame.cpp objects
-	$(COMPILER) $(SRCDIR)/simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/SimpleUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS)
+	$(COMPILER) $(SRCDIR)/simplegame.cpp -o $(BINDIR)/simplegame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/all/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/SimpleUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS)
 
 graphicalgame: $(SRCDIR)/graphicalgame.cpp objects
-	$(COMPILER) $(SRCDIR)/graphicalgame.cpp -o $(BINDIR)/graphicalgame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/NotEyeUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lz -lcurses -lnoteye 
+	$(COMPILER) $(SRCDIR)/graphicalgame.cpp -o $(BINDIR)/graphicalgame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/all/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/NotEyeUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lz -lcurses -lnoteye 
 
 hello: $(SRCDIR)/helloworld.cpp
 	$(COMPILER) $(SRCDIR)/helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)

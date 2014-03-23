@@ -11,6 +11,8 @@
 #include "frontend/ArrayGameMap.hpp"
 #include "frontend/GameMapEntry.hpp"
 #include "frontend/UIState.hpp"
+#include "all/GameMessage.hpp"
+#include "all/GameMessageType.hpp"
 
 namespace runner{
 	class SimpleRunner : public Runner{

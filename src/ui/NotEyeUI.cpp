@@ -4,8 +4,8 @@ using namespace noteye;
 namespace ui{
 
 		NotEyeUI::NotEyeUI(std::string noteye_dir,std::string noteye_user_dir){
-			this->noteye_dir=noteye_dir;
-			this->noteye_user_dir=noteye_user_dir;
+				this->noteye_dir=noteye_dir;
+				this->noteye_user_dir=noteye_user_dir;
 		}
 
 		void NotEyeUI::set_uiState(const frontend::UIState& uiState){
@@ -29,15 +29,6 @@ namespace ui{
 								}
 						}
 				}
-
-
-				setTextAttr(10, 0);
-				noteye_move(0, 25);
-				noteye_addstr("Welcome to Sample Roguelike (C)!");
-				noteye_move(23, 15);
-				noteye_addstr("Press Ctrl+M to change NotEye modes, 'q' to win.");
-				noteye_move(24, 15);
-				noteye_addstr("F8 causes the NotEye script to crash.");
 
 				while(true) {
 
@@ -63,5 +54,28 @@ namespace ui{
 
 				noteye_run((noteye_dir+"/games/sample.noe").c_str(), true);
 
+				noteye_handleerror(errorHandler);
+
+				setTextAttr(10, 0);
+				noteye_move(0, 25);
+				noteye_addstr("Welcome to Sample Roguelike (C)!");
+				noteye_move(23, 15);
+				noteye_addstr("Press Ctrl+M to change NotEye modes, 'q' to win.");
+				noteye_move(24, 15);
+				noteye_addstr("F8 causes the NotEye script to crash.");
+
+		}
+
+		void  NotEyeUI::finish(){
+			noteye_finishinternal(1);
+			noteye_uifinish();
+			noteye_halt();
+		}
+
+		void errorHandler(int id, const char *b1, const char *b2, int param) {
+				fprintf(stderr, "handling NotEye error #%d: %s", id, b1);
+				if(b2) fprintf(stderr, " [%s]", b2);
+				if(param != NOPARAM) fprintf(stderr, " [%d]", param);
+				fprintf(stderr, "\n");
 		}
 }

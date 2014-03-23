@@ -30,4 +30,7 @@ namespace ui{
 		void SimpleUI::init(){
 		}
 
+		void SimpleUI::finish(){
+		}
+
 }

@@ -15,6 +15,7 @@ namespace ui{
 						virtual void set_uiState(const frontend::UIState& uiState) =0;
 						virtual void draw_uiState() =0;
 						virtual void init() =0;
+						virtual void finish() =0;
 				protected:
 						const frontend::UIState* uiState ;
 		};

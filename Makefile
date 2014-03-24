@@ -3,7 +3,7 @@ HPPDIR=include
 INCLUDE= -I $(HPPDIR)/ -I /usr/include/noteye
 OBJDIR :=obj
 OBJS := $(addprefix $(OBJDIR)/,\
-			frontend/ArrayGameMap.o frontend/GameMapEntry.o frontend/UIState.o\
+			frontend/ArrayGameMap.o frontend/GameMapEntry.o frontend/UIState.o frontend/GameMessageContainer.o\
 			ui/SimpleUI.o ui/NotEyeUI.o\
 			all/GameMessage.o\
 			runner/SimpleRunner.o)

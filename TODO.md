@@ -13,6 +13,5 @@ To Do List
 * Handle window bounds correctly in NotEye
 	* Includes handling wrapping of long messages
 * Make nCursesUI (w/o NotEye dependency)
-* Encapsulate message container in UIComponent so that redraw flag can be set
 * Prune Messages
 * More robust input argument handling

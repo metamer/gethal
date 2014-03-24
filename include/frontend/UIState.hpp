@@ -8,18 +8,20 @@
 #define FRONTEND_UISTATE_HPP
 
 #include "frontend/GameMap.hpp"
+#include "frontend/GameMessageContainer.hpp"
 #include "all/GameMessage.hpp"
 #include <vector>
+#include <iostream>
 
 namespace frontend{
 		class UIState{
 				private:
 				public:
 					const GameMap* gameMap;
-					std::vector<const all::GameMessage*> game_messages;
-					UIState(const GameMap& gameMap);
-					~UIState();
-						
+					GameMessageContainer message_list;
+					GameMessageContainer current_message;
+					GameMessageContainer current_hint;
+					UIState(const GameMap& gameMap, std::string current_message);
 		};
 }
 #endif

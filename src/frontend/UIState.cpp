@@ -1,13 +1,8 @@
 #include "frontend/UIState.hpp"
 
 namespace frontend{
-	UIState::UIState(const GameMap& gameMap){
+	UIState::UIState(const GameMap& gameMap, std::string current_message){
 		this->gameMap = &gameMap;
-	}
-	UIState::~UIState(){
-			//delete remaining messages
-			for(std::vector<const all::GameMessage*>::iterator it =game_messages.begin() ; it != game_messages.end(); it++){
-					delete (*it);
-			}
+		this->current_message.game_messages.push_back(new all::GameMessage(current_message));
 	}
 }

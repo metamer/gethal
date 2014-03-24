@@ -35,7 +35,7 @@ namespace ui{
 						}
 				}
 
-				std::vector<const all::GameMessage*> msg_vec= uiState->game_messages;
+				std::vector<const all::GameMessage*> msg_vec= uiState->message_list.game_messages;
 
 				int messages_added=0;
 

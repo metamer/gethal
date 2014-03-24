@@ -27,8 +27,16 @@ namespace ui{
 
 						std::cout<<"Messages:"<<std::endl;
 
-						std::vector<const all::GameMessage*> msg_vec= uiState->game_messages;
+						std::vector<const all::GameMessage*> msg_vec= uiState->message_list.game_messages, cur_msg=uiState->current_message.game_messages, cur_hint=uiState->current_hint.game_messages;
 						for(std::vector<const all::GameMessage*>::iterator it =msg_vec.begin() ; it != msg_vec.end() ; it++){
+								std::cout<<((**it).message_text)<<std::endl;
+						}
+						std::cout<<"Current Messages:"<<std::endl;
+						for(std::vector<const all::GameMessage*>::iterator it =cur_msg.begin() ; it != cur_msg.end() ; it++){
+								std::cout<<((**it).message_text)<<std::endl;
+						}
+						std::cout<<"Current Hint:"<<std::endl;
+						for(std::vector<const all::GameMessage*>::iterator it =cur_hint.begin() ; it != cur_hint.end() ; it++){
 								std::cout<<((**it).message_text)<<std::endl;
 						}
 				}

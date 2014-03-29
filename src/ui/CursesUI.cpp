@@ -25,13 +25,12 @@ namespace ui{
 
 				gamemap_spacer_east=1;
 
-				info_spacer_north=0;
-				info_spacer_south=0;
+				info_spacer_north=1;
+				info_spacer_south=1;
 				info_max_width=0;
 				info_max_height=0;
 
 
-				message_height=3;
 				hint_height=2;
 				status_height=3;
 
@@ -52,7 +51,12 @@ namespace ui{
 						gm_w = gm->height;
 
 
-						if(std::max(gm_h, info_spacer_north + info_spacer_south)+status_height+message_height+hint_height > max_y
+
+						gamemap_spacer_north = info_spacer_north; //(max_y - (gm_h+status_height+message_height+hint_height))/2 ;
+						gamemap_spacer_south = info_spacer_south; //gamemap_spacer_north; 
+
+
+						if(std::max(gamemap_spacer_north + gamemap_spacer_south + gm_h, info_spacer_north + info_spacer_south)+status_height+hint_height > max_y
 										|| margin_left + gm_h + gamemap_spacer_east + margin_right > max_x 
 										|| margin_top_bot_left + margin_top_bot_right  > max_x
 						  ){
@@ -60,12 +64,11 @@ namespace ui{
 								mvaddstr(0,0,"Screen Too Small");
 								refresh();
 								return false;
-						}
-
-						gamemap_spacer_north = (max_y - (gm_h+status_height+message_height+hint_height))/2 ;
-						gamemap_spacer_south = gamemap_spacer_north; 
+						}	
 
 						top_bottom_width = max_x - (margin_top_bot_left + margin_top_bot_right);
+
+						message_height= max_y-(gm_h+gamemap_spacer_south + gamemap_spacer_north+status_height+hint_height);
 
 						info_max_width= max_x -( margin_left + gm_h + gamemap_spacer_east + margin_right );
 						info_max_height= max_y -( status_height + message_height + hint_height + info_spacer_north + info_spacer_south );
@@ -89,91 +92,97 @@ namespace ui{
 
 		void CursesUI::draw_uiState(){
 
-
-				draw_game_map(all::Coordinate(status_height+gamemap_spacer_north,margin_left));
-
-
-				drawMessageContainer(uiState->current_message, all::Coordinate(status_height+info_spacer_north, margin_left+gm_w+gamemap_spacer_east), info_max_height, info_max_width);
-				drawMessageContainer(uiState->message_list, all::Coordinate(status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south, margin_top_bot_left), message_height, top_bottom_width);
-				drawMessageContainer(uiState->current_hint, all::Coordinate(status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south+message_height, margin_top_bot_left), hint_height, top_bottom_width);
-
-				refresh();
-		}
-
-
-		//lines_added+status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south+message_height
-		//margin_top_bot_left)
-		void CursesUI::drawMessageContainer(const frontend::GameMessageContainer& mc, all::Coordinate c, int height, int width){
-
-				if(mc.needsRedraw){
-
-						auto msg_vec= mc.game_messages;
-						int lines_added=0;
-						for(auto it =msg_vec.begin() ; it != msg_vec.end() && lines_added <height; it++){
-								move(lines_added+c.x,c.y);
-								addstr((**it).message_text.c_str());
-								lines_added++;
-						}	
-				}
-		}
-
-
-		void CursesUI::draw_game_map(all::Coordinate c){
-				const frontend::GameMap* gm  = uiState->gameMap;
-				if(gm->needsRedraw){
-
-
-						int maxRows = gm->width;
-						int maxCols = gm->height;
-
-						for(int i = 0; i< maxRows; i++){
-								for(int j = 0; j< maxCols; j++){
-										move(i+c.x,j+c.y);
-										const char c = gm->get_entry(i,j).symbol;
-										addch(c);
-								}
+				if(layout_calc_needed ){
+						if(!recalculate_layout()){
+								return;
 						}
+		}
+
+
+		draw_game_map(all::Coordinate(status_height+gamemap_spacer_north,margin_left));
+
+
+		drawMessageContainer(uiState->current_message, all::Coordinate(status_height+info_spacer_north, margin_left+gm_w+gamemap_spacer_east), info_max_height, info_max_width);
+		drawMessageContainer(uiState->message_list, all::Coordinate(status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south, margin_top_bot_left), message_height, top_bottom_width);
+		drawMessageContainer(uiState->current_hint, all::Coordinate(status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south+message_height, margin_top_bot_left), hint_height, top_bottom_width);
+
+		refresh();
+}
+
+
+//lines_added+status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south+message_height
+//margin_top_bot_left)
+void CursesUI::drawMessageContainer(const frontend::GameMessageContainer& mc, all::Coordinate c, int height, int width){
+
+		if(mc.needsRedraw){
+
+				auto msg_vec= mc.game_messages;
+				int lines_added=0;
+				for(auto it =msg_vec.begin() ; it != msg_vec.end() && lines_added <height; it++){
+						move(lines_added+c.x,c.y);
+						addstr((**it).message_text.c_str());
+						lines_added++;
 				}	
 		}
+}
 
-		bool CursesUI::process_input(){
-				bool should_continue = true;
-				int ch = getch();
-				switch (ch){
 
-						case 'q':
-								printw("You have won!\n");
-								should_continue = false;
-								break;
+void CursesUI::draw_game_map(all::Coordinate c){
+		const frontend::GameMap* gm  = uiState->gameMap;
+		if(gm->needsRedraw){
 
-						default:
-								break;
+
+				int maxRows = gm->width;
+				int maxCols = gm->height;
+
+				for(int i = 0; i< maxRows; i++){
+						for(int j = 0; j< maxCols; j++){
+								move(i+c.x,j+c.y);
+								const char c = gm->get_entry(i,j).symbol;
+								addch(c);
+						}
 				}
+		}	
+}
 
-				return should_continue;
+bool CursesUI::process_input(){
+		bool should_continue = true;
+		int ch = getch();
+		switch (ch){
 
+				case 'q':
+						printw("You have won!\n");
+						should_continue = false;
+						break;
+
+				default:
+						break;
 		}
 
+		return should_continue;
 
-		void CursesUI::init(){
+}
 
-				p_window = initscr();
-				clear();
-				cbreak();
-				noecho();
-				refresh();
 
-				ui_initialized=true;
+void CursesUI::init(){
 
-				if(layout_calc_needed){
-						recalculate_layout();
-				}
+		p_window = initscr();
+		clear();
+		cbreak();
+		noecho();
+		refresh();
 
-				refresh();
+		ui_initialized=true;
 
+		if(layout_calc_needed){
+				recalculate_layout();
 		}
 
-		void  CursesUI::finish(){
-				endwin();
-		}
+		refresh();
+
+}
+
+void  CursesUI::finish(){
+		endwin();
+}
 }

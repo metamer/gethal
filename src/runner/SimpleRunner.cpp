@@ -9,7 +9,7 @@ namespace runner{
 		void SimpleRunner::run_game(){
 				frontend::GameMapEntry def = frontend::GameMapEntry();
 				def.symbol='.';
-				const frontend::GameMap& gm = frontend::ArrayGameMap(12,18, def);
+				const frontend::GameMap& gm = frontend::ArrayGameMap(24,36, def);
 				frontend::UIState uis = frontend::UIState(gm, "You are unmanifest");
 				ui->set_uiState(uis);
 				uis.message_list.game_messages.push_back(new all::GameMessage("Welcome to gethal",all::SYSTEM));

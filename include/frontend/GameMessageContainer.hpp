@@ -15,6 +15,7 @@ namespace frontend{
 	class GameMessageContainer : public UIComponent{
 			public:
 					std::vector<const all::GameMessage*> game_messages;
+					GameMessageContainer();
 					~GameMessageContainer();
 	};
 

@@ -6,6 +6,11 @@ namespace ui{
 
 				state_set=false;
 				ui_initialized=false;
+				layout_calc_needed=true;
+
+				max_x=0;
+				max_y=0;
+
 				margin_top_bot_left=1;
 				margin_top_bot_right=1;
 
@@ -14,14 +19,27 @@ namespace ui{
 
 				margin_left=1;
 				margin_right=1;
+
+				gamemap_spacer_east=0;
+				gamemap_spacer_east=0;
+
 				gamemap_spacer_east=1;
+
+				info_spacer_north=0;
+				info_spacer_south=0;
+				info_max_width=0;
+				info_max_height=0;
+
 
 				message_height=3;
 				hint_height=2;
 				status_height=3;
 
-				max_x=0;
-				max_y=0;
+				top_bottom_width=0;
+
+				gm_h=0;
+				gm_w=0;
+				p_window=nullptr;
 		}
 
 		bool CursesUI::recalculate_layout(){

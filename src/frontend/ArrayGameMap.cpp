@@ -5,11 +5,11 @@ namespace frontend{
 		this->needsRedraw=true;
 		this->width=width;
 		this->height=height;
-		this->map= std::vector< std::vector <const GameMapEntry*> >(width);
+		this->map= std::vector<std::vector<const GameMapEntry*>>(width);
 
-		for(int i = 0 ; i< width ; i++){
+		for(auto &r : map){
 			std::vector<const GameMapEntry*> column(height);
-			map[i]=column;
+			r=column;
 		}
 
 		//instantiate gamemapentries
@@ -26,9 +26,9 @@ namespace frontend{
 
 	ArrayGameMap::~ArrayGameMap(){
 		//delete gamemapentries that were created upon construction
-		for(int i = 0; i<width; i++){
-			for(int j = 0; j<height; j++){
-				delete (map[i][j]);
+		for(auto &r : map){
+			for(auto &c : r){
+				delete (c);
 			}
 		}
 	}

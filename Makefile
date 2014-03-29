@@ -5,7 +5,7 @@ OBJDIR :=obj
 OBJS := $(addprefix $(OBJDIR)/,\
 			frontend/ArrayGameMap.o frontend/GameMapEntry.o frontend/UIState.o frontend/GameMessageContainer.o\
 			ui/SimpleUI.o ui/NotEyeUI.o ui/CursesUI.o\
-			all/GameMessage.o\
+			all/GameMessage.o all/Coordinate.o\
 			runner/SimpleRunner.o)
 BINDIR=bin
 SRCDIR=src

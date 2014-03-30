@@ -18,6 +18,7 @@ namespace runner{
 				uis.status_entries.status_entries.push_back(new frontend::GameNumericStatusEntry("Mana Points","MP", frontend::STATUS, 47, true, 150));
 				uis.status_entries.status_entries.push_back(new frontend::GameNumericStatusEntry("Stamina Points","SP", frontend::STATUS, 1090, true, 2000));
 				uis.status_entries.status_entries.push_back(new frontend::GameNumericStatusEntry("Level","LV", frontend::ATTRIBUTE, 76));
+				uis.status_entries.status_entries.push_back(new frontend::GameStatusEntry("Ethreal","ETH", frontend::CONDITION));
 
 				do{
 						ui->draw_uiState();

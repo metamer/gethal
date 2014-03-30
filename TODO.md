@@ -2,6 +2,7 @@ To Do
 ======
 To Do List
 
+* Set height/width of ui component instead of passing to drawcomponent in ui
 * Add UI Modes (ex: Inventory, Messages)
 * Add ability for UI to call Runner when processing input
 * Add status messages

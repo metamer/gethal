@@ -267,6 +267,12 @@ namespace ui{
 				clear();
 				cbreak();
 				noecho();
+				nonl();
+				nonl();
+				intrflush(stdscr, FALSE);
+				keypad(stdscr, TRUE);
+
+
 				curs_set(0);
 				refresh();
 

@@ -3,6 +3,7 @@ To Do
 To Do List
 
 * Make colored_string class in frontend (which, in addition to gamecolor also has attributes such as bold, etc)
+* Set locale in curses
 * Add map from gamecolor to uicolor
 * Reverse sort messages
 * Generalize UI handling of long strings
@@ -13,8 +14,16 @@ To Do List
 * Prune Messages
 * More robust input argument handling
 
-**Noteye
+NoteyeUI
 
 * Pass noteye_args properly to NotEyeUI
 * Add map info to NotEyeUI
 * Handle colors in NotEyeUI
+
+
+Gardening
+
+* normalize naming convention
+* normalize coordinate system (currently usage of x/y and height/width is counter-intuitive)
+* normalize indentation
+* add comments

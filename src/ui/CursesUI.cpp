@@ -267,6 +267,7 @@ namespace ui{
 				clear();
 				cbreak();
 				noecho();
+				curs_set(0);
 				refresh();
 
 				ui_initialized=true;

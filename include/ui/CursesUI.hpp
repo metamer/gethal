@@ -8,6 +8,7 @@
 #define UI_CURSESUI_HPP
 
 #include "ui/UI.hpp" 
+#include "ui/Spacer.hpp" 
 #include "frontend/UIState.hpp" 
 #include "all/Coordinate.hpp" 
 #include "frontend/GameStatusEntry.hpp" 
@@ -36,6 +37,7 @@ namespace ui{
 						std::string get_status_entry_string(const frontend::GameStatusEntry& se);
 						void drawStatusEntryContainer(const frontend::GameStatusEntryContainer& mc, all::Coordinate c, int height, int width);
 						bool recalculate_layout();
+						void draw_spacer(const Spacer& s);
 
 						bool state_set;
 						bool ui_initialized;

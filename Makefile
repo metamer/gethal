@@ -4,7 +4,7 @@ INCLUDE= -I $(HPPDIR)/ -I /usr/include/noteye
 OBJDIR :=obj
 OBJS := $(addprefix $(OBJDIR)/,\
 			frontend/ArrayGameMap.o frontend/GameMapEntry.o frontend/UIState.o frontend/GameMessageContainer.o frontend/GameStatusEntry.o frontend/GameNumericStatusEntry.o frontend/GameStatusEntryContainer.o\
-			ui/SimpleUI.o ui/NotEyeUI.o ui/CursesUI.o\
+			ui/SimpleUI.o ui/NotEyeUI.o ui/CursesUI.o ui/Spacer.o\
 			all/GameMessage.o all/Coordinate.o\
 			runner/SimpleRunner.o)
 BINDIR=bin
@@ -22,7 +22,7 @@ graphicalgame: $(SRCDIR)/graphicalgame.cpp objects
 	$(COMPILER) $(SRCDIR)/graphicalgame.cpp -o $(BINDIR)/graphicalgame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/all/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/NotEyeUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lz -lcurses -lnoteye 
 
 consolegame: $(SRCDIR)/consolegame.cpp objects
-	$(COMPILER) $(SRCDIR)/consolegame.cpp -o $(BINDIR)/consolegame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/all/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/CursesUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lcurses 
+	$(COMPILER) $(SRCDIR)/consolegame.cpp -o $(BINDIR)/consolegame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/all/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/CursesUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lncursesw
 
 hello: $(SRCDIR)/helloworld.cpp
 	$(COMPILER) $(SRCDIR)/helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)

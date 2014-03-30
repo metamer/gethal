@@ -90,6 +90,10 @@ namespace ui{
 
 		}
 
+		void CursesUI::draw_spacer(const Spacer& s){
+				
+		}
+
 		void CursesUI::draw_uiState(){
 
 				if(layout_calc_needed ){
@@ -218,8 +222,7 @@ namespace ui{
 				for(int i = c.x ; i < c.x+height ; i++ ){
 						for(int j = c.y ; j < c.y+width ; j++ ){
 								//todo: add color handling
-								mvaddch(i,j,' ');
-
+								mvaddstr(i,j,"\u2592");
 						}
 				}
 		}
@@ -263,6 +266,7 @@ namespace ui{
 
 		void CursesUI::init(){
 
+				setlocale(LC_ALL,"");
 				p_window = initscr();
 				clear();
 				cbreak();

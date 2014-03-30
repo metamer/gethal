@@ -12,8 +12,9 @@ namespace all{
 
 		class Coordinate{
 				public:
+						Coordinate();
 						Coordinate(int x, int y);
-						int x, y;
+						int x=0, y=0;
 		};
 
 }

@@ -1,0 +1,3 @@
+#source this instead of executing
+
+valgrind --leak-check=full ./bin/consolegame

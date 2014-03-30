@@ -2,7 +2,7 @@
 
 namespace ui{
 
-		CursesUI::CursesUI(){
+		CursesUI::CursesUI():UI(){
 
 				state_set=false;
 				ui_initialized=false;

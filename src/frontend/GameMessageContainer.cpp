@@ -2,10 +2,8 @@
 
 namespace frontend{
 
-		GameMessageContainer::GameMessageContainer(){
+		GameMessageContainer::GameMessageContainer():UIComponent(){
 			needsRedraw=true;
-			width=0;
-			height=0;
 		}
 		
 		GameMessageContainer::~GameMessageContainer(){

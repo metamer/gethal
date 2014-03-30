@@ -15,6 +15,7 @@
 #include <curses.h>
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 namespace ui{
 		class CursesUI : public UI{
@@ -29,6 +30,7 @@ namespace ui{
 						bool process_input();
 				private:
 						void draw_game_map(all::Coordinate c);
+						void create_status_line(std::vector<const frontend::GameStatusEntry*> entry_vec, all::Coordinate start_coord, int len_limit);
 						void drawMessageContainer(const frontend::GameMessageContainer& mc, all::Coordinate c, int height, int width);
 						void clear_bounds(all::Coordinate c, int height, int width);
 						std::string get_status_entry_string(const frontend::GameStatusEntry& se);

@@ -120,11 +120,43 @@ namespace ui{
 						auto status_vec= sc.status_entries;
 						int lines_added=0;
 						for(auto it =status_vec.begin() ; it != status_vec.end() && lines_added <height; it++){
-								move(lines_added+c.x,c.y);
-								addstr(get_status_entry_string(**it).c_str());
+								create_status_line(status_vec,all::Coordinate(lines_added+c.x,c.y),width);
 								lines_added++;
 						}	
 				}
+		}
+
+		void CursesUI::create_status_line(std::vector<const frontend::GameStatusEntry*> entry_vec, all::Coordinate start_coord, int len_limit){
+			move(start_coord.x, start_coord.y);
+			int total_length=0;
+			bool reached_limit = false;
+			bool first_entry = true;
+
+			for(auto &se : entry_vec){
+
+					std::string add_str= get_status_entry_string(*se);
+
+					if(first_entry){
+						first_entry= false;
+					}else{
+						add_str = "  "+add_str;
+					}
+
+					total_length+=add_str.length();
+
+					if(total_length >len_limit){
+						reached_limit = true;
+						break;
+					}else{
+						addstr(add_str.c_str());
+						move(start_coord.x,start_coord.y+total_length);
+					}
+			}
+
+			if(reached_limit && len_limit > 3){
+				move(start_coord.x, start_coord.y + len_limit -1 - 3);
+				addstr("...");
+			}
 		}
 
 		std::string CursesUI::get_status_entry_string(const frontend::GameStatusEntry& se){
@@ -132,10 +164,10 @@ namespace ui{
 
 				if(se.is_numeric()){
 						str+=':';
-						str+=se.current_value();
+						str+=std::to_string(se.current_value());
 						if(se.has_maximum()){
 							str+="/";
-							str+=se.maximum_value();
+							str+=std::to_string(se.maximum_value());
 						}
 				}
 				return str;

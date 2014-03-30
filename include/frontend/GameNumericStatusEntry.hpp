@@ -10,9 +10,9 @@
 #include "frontend/GameStatusEntry.hpp"
 
 namespace frontend{
-		class GameNumericStatusEntry:GameStatusEntry{
+		class GameNumericStatusEntry: public GameStatusEntry{
 				public:
-						GameNumericStatusEntry(std::string name, std::string abbrev, GameStatusType status_type,int cur_val,bool has_max,int max_val);
+						GameNumericStatusEntry(std::string name, std::string abbrev, GameStatusType status_type,int cur_val,bool has_max=false,int max_val=0);
 						int cur_val, max_val;
 						bool has_max;
 						bool is_numeric() const;

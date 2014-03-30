@@ -13,6 +13,8 @@
 #include "frontend/UIState.hpp"
 #include "all/GameMessage.hpp"
 #include "all/GameMessageType.hpp"
+#include "frontend/GameStatusEntry.hpp"
+#include "frontend/GameNumericStatusEntry.hpp"
 
 namespace runner{
 	class SimpleRunner : public Runner{

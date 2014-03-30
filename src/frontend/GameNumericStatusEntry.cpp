@@ -1,7 +1,7 @@
 #include "frontend/GameNumericStatusEntry.hpp"
 
 namespace frontend{
-		GameNumericStatusEntry::GameNumericStatusEntry(std::string name, std::string abbrev, GameStatusType status_type,int cur_val,bool has_max=false,int max_val=0)
+		GameNumericStatusEntry::GameNumericStatusEntry(std::string name, std::string abbrev, GameStatusType status_type,int cur_val,bool has_max, int max_val)
 				: GameStatusEntry(name, abbrev, status_type){
 					this->cur_val=cur_val;
 					this->max_val=max_val;

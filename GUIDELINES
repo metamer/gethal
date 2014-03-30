@@ -1,6 +1,9 @@
+General
+	using C++11 standard and gcc
 Namespace
 	generally use the name of the src subfolder to name namespace
 Headers 
 	include guard naming convention follows boost: 
 		NAMESPACE_FILENAME_HPP
 	use .cpp .hpp extension for C++ class and header files
+	default argument values should occur in function declarations

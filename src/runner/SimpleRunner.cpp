@@ -14,6 +14,7 @@ namespace runner{
 				ui->set_uiState(uis);
 				uis.message_list.game_messages.push_back(new all::GameMessage("Welcome to gethal",all::SYSTEM));
 				uis.current_hint.game_messages.push_back(new all::GameMessage("Press q to quit",all::SYSTEM));
+				uis.status_entries.status_entries.push_back(new frontend::GameStatusEntry("Hit Points","HP", frontend::STATUS));
 
 				do{
 						ui->draw_uiState();

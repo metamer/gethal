@@ -10,6 +10,8 @@
 #include "ui/UI.hpp" 
 #include "frontend/UIState.hpp" 
 #include "all/Coordinate.hpp" 
+#include "frontend/GameStatusEntry.hpp" 
+#include "frontend/GameNumericStatusEntry.hpp" 
 #include <curses.h>
 #include <iostream>
 #include <algorithm>
@@ -28,6 +30,9 @@ namespace ui{
 				private:
 						void draw_game_map(all::Coordinate c);
 						void drawMessageContainer(const frontend::GameMessageContainer& mc, all::Coordinate c, int height, int width);
+						void clear_bounds(all::Coordinate c, int height, int width);
+						std::string get_status_entry_string(const frontend::GameStatusEntry& se);
+						void drawStatusEntryContainer(const frontend::GameStatusEntryContainer& mc, all::Coordinate c, int height, int width);
 						bool recalculate_layout();
 
 						bool state_set;

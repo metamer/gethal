@@ -8,7 +8,7 @@ namespace ui{
 		int NotEyeUI::MESSAGE_LIMIT=5;
 		int NotEyeUI::MESSAGE_MAP_COLUMN_OFFSET=7;
 
-		NotEyeUI::NotEyeUI(std::string noteye_dir,std::string noteye_user_dir){
+		NotEyeUI::NotEyeUI(std::string noteye_dir,std::string noteye_user_dir):UI(){
 				this->noteye_dir=noteye_dir;
 				this->noteye_user_dir=noteye_user_dir;
 		}

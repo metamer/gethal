@@ -22,7 +22,7 @@ graphicalgame: $(SRCDIR)/graphicalgame.cpp objects
 	$(COMPILER) $(SRCDIR)/graphicalgame.cpp -o $(BINDIR)/graphicalgame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/all/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/NotEyeUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lz -lcurses -lnoteye 
 
 consolegame: $(SRCDIR)/consolegame.cpp objects
-	$(COMPILER) $(SRCDIR)/consolegame.cpp -o $(BINDIR)/consolegame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/all/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/CursesUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lncursesw
+	$(COMPILER) $(SRCDIR)/consolegame.cpp -o $(BINDIR)/consolegame $(OBJDIR)/runner/SimpleRunner.o $(OBJDIR)/all/*.o $(OBJDIR)/frontend/*.o $(OBJDIR)/ui/Spacer.o $(OBJDIR)/ui/CursesUI.o $(INCLUDE) $(CFLAGS) $(DEF) $(LIBS) -lncurses
 
 hello: $(SRCDIR)/helloworld.cpp
 	$(COMPILER) $(SRCDIR)/helloworld.cpp -o $(BINDIR)/helloworld $(CFLAGS) $(DEF)

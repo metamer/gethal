@@ -13,6 +13,8 @@ namespace ui{
 
 				margin_top_bot_left=1;
 				margin_top_bot_right=1;
+				margin_top=1;
+				margin_bot=1;
 
 				info_spacer_north=1;
 				info_spacer_south=1;
@@ -39,6 +41,7 @@ namespace ui{
 				gm_h=0;
 				gm_w=0;
 				p_window=nullptr;
+				spacer_char="\u2592";
 		}
 
 		bool CursesUI::recalculate_layout(){
@@ -56,7 +59,7 @@ namespace ui{
 						gamemap_spacer_south = info_spacer_south; //gamemap_spacer_north; 
 
 
-						if(std::max(gamemap_spacer_north + gamemap_spacer_south + gm_h, info_spacer_north + info_spacer_south)+status_height+hint_height > max_y
+						if(std::max(gamemap_spacer_north + gamemap_spacer_south + gm_h, info_spacer_north + info_spacer_south)+status_height+hint_height+margin_top+margin_bot > max_y
 										|| margin_left + gm_h + gamemap_spacer_east + margin_right > max_x 
 										|| margin_top_bot_left + margin_top_bot_right  > max_x
 						  ){
@@ -68,10 +71,12 @@ namespace ui{
 
 						top_bottom_width = max_x - (margin_top_bot_left + margin_top_bot_right);
 
-						message_height= max_y-(gm_h+gamemap_spacer_south + gamemap_spacer_north+status_height+hint_height);
+						//fill screen w/ spacer char
+						draw_spacer(Spacer(all::Coordinate(0,0),max_x,max_y));
+						message_height= max_y-(gm_h+gamemap_spacer_south + gamemap_spacer_north+status_height+hint_height+margin_top+margin_bot);
 
 						info_max_width= max_x -( margin_left + gm_w + gamemap_spacer_east + margin_right );
-						info_max_height= max_y -( status_height + message_height + hint_height + info_spacer_north + info_spacer_south );
+						info_max_height= max_y -( status_height + message_height + hint_height + info_spacer_north + info_spacer_south + margin_top + margin_bot );
 
 						layout_calc_needed=false;
 						return true;
@@ -91,7 +96,13 @@ namespace ui{
 		}
 
 		void CursesUI::draw_spacer(const Spacer& s){
-				
+				const all::Coordinate start_coord = s.start_coord;
+
+				for(int i = 0; i < s.width ; i++){
+					for(int j = 0 ; j < s.height ; j++){
+						mvaddstr(start_coord.x + i , start_coord.y + j , spacer_char.c_str());
+					}
+				}
 		}
 
 		void CursesUI::draw_uiState(){
@@ -103,13 +114,13 @@ namespace ui{
 				}
 
 
-				draw_game_map(all::Coordinate(status_height+gamemap_spacer_north,margin_left));
+				draw_game_map(all::Coordinate(margin_top+status_height+gamemap_spacer_north,margin_left));
 
 
-				drawStatusEntryContainer(uiState->status_entries, all::Coordinate(0, margin_top_bot_left), status_height, top_bottom_width);
-				drawMessageContainer(uiState->current_message, all::Coordinate(status_height+info_spacer_north, margin_left+gm_w+gamemap_spacer_east), info_max_height, info_max_width);
-				drawMessageContainer(uiState->message_list, all::Coordinate(status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south, margin_top_bot_left), message_height, top_bottom_width);
-				drawMessageContainer(uiState->current_hint, all::Coordinate(status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south+message_height, margin_top_bot_left), hint_height, top_bottom_width);
+				drawStatusEntryContainer(uiState->status_entries, all::Coordinate(margin_top, margin_top_bot_left), status_height, top_bottom_width);
+				drawMessageContainer(uiState->current_message, all::Coordinate(margin_top+status_height+info_spacer_north, margin_left+gm_w+gamemap_spacer_east), info_max_height, info_max_width);
+				drawMessageContainer(uiState->message_list, all::Coordinate(margin_top+status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south, margin_top_bot_left), message_height, top_bottom_width);
+				drawMessageContainer(uiState->current_hint, all::Coordinate(margin_top+status_height+gamemap_spacer_north+gm_h+gamemap_spacer_south+message_height, margin_top_bot_left), hint_height, top_bottom_width);
 
 				refresh();
 		}
@@ -131,19 +142,19 @@ namespace ui{
 								std::vector<const frontend::GameStatusEntry*>* vec_to_add = nullptr;
 								switch(it->status_type){
 										case frontend::STATUS:
-											vec_to_add = &stat_vec;
-											break;
+												vec_to_add = &stat_vec;
+												break;
 										case frontend::ATTRIBUTE:
-											vec_to_add = &attr_vec;
-											break;
+												vec_to_add = &attr_vec;
+												break;
 										case frontend::CONDITION:
-											vec_to_add = &cond_vec;;
-											break;
+												vec_to_add = &cond_vec;;
+												break;
 										default:
 												break;
 								}
 								if(vec_to_add != nullptr){
-									vec_to_add->push_back(it);
+										vec_to_add->push_back(it);
 								}
 						}
 
@@ -222,7 +233,7 @@ namespace ui{
 				for(int i = c.x ; i < c.x+height ; i++ ){
 						for(int j = c.y ; j < c.y+width ; j++ ){
 								//todo: add color handling
-								mvaddstr(i,j,"\u2592");
+								mvaddstr(i,j," ");
 						}
 				}
 		}
@@ -291,6 +302,7 @@ namespace ui{
 		}
 
 		void  CursesUI::finish(){
+				clear();
 				endwin();
 		}
 }

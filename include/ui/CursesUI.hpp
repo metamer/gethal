@@ -49,6 +49,8 @@ namespace ui{
 						int margin_top_bot_left;
 						int margin_top_bot_right;
 
+						int margin_top;
+						int margin_bot;
 						int margin_left;
 						int margin_right;
 
@@ -71,6 +73,7 @@ namespace ui{
 						WINDOW* p_window;
 
 						int gm_w, gm_h;
+						std::string spacer_char;
 		};
 
 }

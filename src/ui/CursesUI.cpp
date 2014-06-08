@@ -44,6 +44,7 @@ namespace ui{
 				spacer_char="\u2592";
 
 				ccm = CursesColorMap();
+				cmu = frontend::ColorMapperUtil();
 		}
 
 		bool CursesUI::recalculate_layout(){
@@ -232,11 +233,12 @@ namespace ui{
 						int lines_added=0;
 						for(auto it =msg_vec.begin() ; it != msg_vec.end() && lines_added <height; it++){
 								move(lines_added+c.x,c.y);
+								frontend::ColoredTextObject cto = cmu.get_color_object_for_message_type((**it).message_type);
 								frontend::ColoredString cs(
 														(**it).message_text, 
-														frontend::GameMapEntryColor::BLACK,
-														frontend::GameMapEntryColor::RED,
-														frontend::GameMapEntryAttribute::NORMAL);
+														cto.color_fg,
+														cto.color_bg,
+														cto.attribute);
 								this->draw_colored_string(cs);
 												
 								lines_added++;

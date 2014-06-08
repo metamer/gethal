@@ -14,6 +14,7 @@
 #include "frontend/GameStatusEntry.hpp" 
 #include "frontend/GameNumericStatusEntry.hpp" 
 #include "frontend/ColoredString.hpp" 
+#include "frontend/ColorMapperUtil.hpp" 
 #include "ui/CursesColorMap.hpp" 
 #include <curses.h>
 #include <iostream>
@@ -79,6 +80,7 @@ namespace ui{
 						std::string spacer_char;
 
 						CursesColorMap ccm;
+						frontend::ColorMapperUtil cmu;
 		};
 
 }

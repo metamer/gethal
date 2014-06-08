@@ -13,6 +13,8 @@
 #include "all/Coordinate.hpp" 
 #include "frontend/GameStatusEntry.hpp" 
 #include "frontend/GameNumericStatusEntry.hpp" 
+#include "frontend/ColoredString.hpp" 
+#include "ui/CursesColorMap.hpp" 
 #include <curses.h>
 #include <iostream>
 #include <algorithm>
@@ -38,6 +40,7 @@ namespace ui{
 						void drawStatusEntryContainer(const frontend::GameStatusEntryContainer& mc, all::Coordinate c, int height, int width);
 						bool recalculate_layout();
 						void draw_spacer(const Spacer& s);
+						void draw_colored_string(const frontend::ColoredString& cs);
 
 						bool state_set;
 						bool ui_initialized;
@@ -74,6 +77,8 @@ namespace ui{
 
 						int gm_w, gm_h;
 						std::string spacer_char;
+
+						CursesColorMap ccm;
 		};
 
 }

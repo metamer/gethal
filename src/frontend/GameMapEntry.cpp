@@ -11,5 +11,4 @@ namespace frontend{
 				this->color_bg = color_bg;
 				this->attribute = attribute;
 		}
-
 }

@@ -9,15 +9,14 @@
 
 #include "frontend/GameMapEntryColor.hpp"
 #include "frontend/GameMapEntryAttribute.hpp"
+#include "frontend/ColoredTextObject.hpp"
 
 
 namespace frontend{
 		//POD type
-		class GameMapEntry{
+		class GameMapEntry: public ColoredTextObject{
 				public:
 						char symbol;
-						GameMapEntryColor color_fg, color_bg;
-						GameMapEntryAttribute attribute ;
 						GameMapEntry();
 						GameMapEntry(char symbol, GameMapEntryColor color_fg, GameMapEntryColor color_bg, GameMapEntryAttribute attribute);
 		};

@@ -42,6 +42,8 @@ namespace ui{
 				gm_w=0;
 				p_window=nullptr;
 				spacer_char="\u2592";
+
+				ccm = CursesColorMap();
 		}
 
 		bool CursesUI::recalculate_layout(){
@@ -95,13 +97,20 @@ namespace ui{
 
 		}
 
+		void CursesUI::draw_colored_string(const frontend::ColoredString& cs){
+				init_pair(1, ccm.get_curses_color(cs.color_fg), ccm.get_curses_color(cs.color_bg));
+				attron(COLOR_PAIR(1));
+				addstr(cs.str.c_str());
+				attroff(COLOR_PAIR(1));
+
+		}
 		void CursesUI::draw_spacer(const Spacer& s){
 				const all::Coordinate start_coord = s.start_coord;
 
 				for(int i = 0; i < s.width ; i++){
-					for(int j = 0 ; j < s.height ; j++){
-						mvaddstr(start_coord.x + i , start_coord.y + j , spacer_char.c_str());
-					}
+						for(int j = 0 ; j < s.height ; j++){
+								mvaddstr(start_coord.x + i , start_coord.y + j , spacer_char.c_str());
+						}
 				}
 		}
 
@@ -223,7 +232,13 @@ namespace ui{
 						int lines_added=0;
 						for(auto it =msg_vec.begin() ; it != msg_vec.end() && lines_added <height; it++){
 								move(lines_added+c.x,c.y);
-								addstr((**it).message_text.c_str());
+								frontend::ColoredString cs(
+														(**it).message_text, 
+														frontend::GameMapEntryColor::BLACK,
+														frontend::GameMapEntryColor::RED,
+														frontend::GameMapEntryAttribute::NORMAL);
+								this->draw_colored_string(cs);
+												
 								lines_added++;
 						}	
 				}
@@ -279,6 +294,14 @@ namespace ui{
 
 				setlocale(LC_ALL,"");
 				p_window = initscr();
+				if(has_colors() == FALSE){
+						endwin();
+						printf("Your terminal does not support color");
+						exit(1);
+				}else{
+						start_color();
+				}
+
 				clear();
 				cbreak();
 				noecho();

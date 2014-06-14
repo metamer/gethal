@@ -12,7 +12,7 @@ namespace runner{
 				const frontend::GameMap& gm = frontend::ArrayGameMap(10,20, def);
 				frontend::UIState uis = frontend::UIState(gm, "You are unmanifest");
 				ui->set_uiState(uis);
-				uis.message_list.game_messages.push_back(new all::GameMessage("Welcome to gethal",all::SYSTEM));
+				uis.message_list.game_messages.push_back(new all::GameMessage("Welcome to gethal",all::BEST));
 				uis.current_hint.game_messages.push_back(new all::GameMessage("Press q to quit",all::SYSTEM));
 				uis.status_entries.status_entries.push_back(new frontend::GameNumericStatusEntry("Hit Points","HP", frontend::STATUS, 50, true, 50));
 				uis.status_entries.status_entries.push_back(new frontend::GameNumericStatusEntry("Mana Points","MP", frontend::STATUS, 47, true, 150));

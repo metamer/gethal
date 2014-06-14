@@ -2,9 +2,9 @@ To Do
 ======
 To Do List
 
-* Make colored_string class in frontend (which, in addition to gamecolor also has attributes such as bold, etc)
+* Refactor/rename colored text/string classes
+** especially revisit constructors
 * Set locale in curses
-* Add map from gamecolor to uicolor
 * Reverse sort messages
 * Generalize UI handling of long strings
 * Set height/width of ui component instead of passing to drawcomponent in ui

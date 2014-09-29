@@ -8,6 +8,7 @@
 #define UI_UI_HPP
 
 #include "frontend/UIState.hpp"
+#include "all/GameAction.hpp"
 
 namespace ui{
 		class UI{
@@ -16,8 +17,7 @@ namespace ui{
 						virtual void draw_uiState() =0;
 						virtual void init() =0;
 						virtual void finish() =0;
-						virtual bool process_input() =0;
-				protected:
+						virtual all::GameAction process_input() =0;
 						const frontend::UIState* uiState ;
 		};
 }

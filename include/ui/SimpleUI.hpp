@@ -8,6 +8,7 @@
 #define UI_SIMPLEUI_HPP
 
 #include "ui/UI.hpp"
+#include "all/GameAction.hpp"
 #include <iostream>
 
 namespace ui{
@@ -17,7 +18,7 @@ namespace ui{
 						virtual void draw_uiState();
 						virtual void init();
 						virtual void finish();
-						virtual bool process_input();
+						virtual all::GameAction process_input();
 
 		};
 

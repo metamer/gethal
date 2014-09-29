@@ -45,14 +45,13 @@ namespace ui{
 						messages_added++;
 				}
 		}
-		bool NotEyeUI::process_input(){
+		all::GameAction NotEyeUI::process_input(){
 				bool should_continue = true;
 				int ch = noteye_getch();
 				switch (ch){
 
 						case 'w':
-								printf("You have won!\n");
-								should_continue = false;
+								return all::GameAction::QUIT;
 								break;
 
 						case  NOTEYEERR:
@@ -72,7 +71,7 @@ namespace ui{
 								break;
 				}
 
-				return should_continue;
+				return all::GameAction::WAIT;
 
 		}
 

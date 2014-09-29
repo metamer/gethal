@@ -23,7 +23,22 @@ namespace runner{
 				do{
 						ui->draw_uiState();
 				}
-				while(ui->process_input());
+				while(process_gameAction(ui->process_input()));
+				uis.current_hint.game_messages.push_back(new all::GameMessage("Game Over",all::SYSTEM));
+				uis.current_hint.game_messages.push_back(new all::GameMessage("Thanks for playing!",all::SYSTEM));
 
+		}
+
+		bool SimpleRunner::process_gameAction(all::GameAction ga){
+			bool continue_processing = true;
+			switch(ga){
+				case all::GameAction::QUIT:
+						ui->draw_uiState();
+						continue_processing = false;
+						break;
+				default:
+					break;
+			}
+			return continue_processing;
 		}
 }

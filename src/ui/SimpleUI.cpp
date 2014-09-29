@@ -52,18 +52,18 @@ namespace ui{
 		void SimpleUI::finish(){
 		}
 
-		bool SimpleUI::process_input(){
+		all::GameAction SimpleUI::process_input(){
 				char ch = 0;
 				std::cin>>ch;
 				switch (ch){
 						case 'q':
 								std::cout<<"Quitting"<<std::endl;
-								return false;
+								return all::GameAction::QUIT;
 								break;
 						default:
 								break;
 				}
-				return true;
+				return all::GameAction::WAIT;
 		}
 
 }

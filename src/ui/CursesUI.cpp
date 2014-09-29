@@ -45,6 +45,14 @@ namespace ui{
 
 				ccm = CursesColorMap();
 				cmu = frontend::ColorMapperUtil();
+				imp = frontend::InputMapper();
+				imp.clear_mappings();
+				imp.ui_action_map['r']= frontend::UIAction::REDRAW;
+				imp.game_action_map['q']= all::GameAction::QUIT;
+				imp.game_action_map[KEY_UP]= all::GameAction::NORTH;
+				imp.game_action_map[KEY_DOWN]= all::GameAction::SOUTH;
+				imp.game_action_map[KEY_RIGHT]= all::GameAction::EAST;
+				imp.game_action_map[KEY_LEFT]= all::GameAction::WEST;
 		}
 
 		bool CursesUI::recalculate_layout(){
@@ -235,12 +243,12 @@ namespace ui{
 								move(lines_added+c.x,c.y);
 								frontend::ColoredTextObject cto = cmu.get_color_object_for_message_type((**it).message_type);
 								frontend::ColoredString cs(
-														(**it).message_text, 
-														cto.color_fg,
-														cto.color_bg,
-														cto.attribute);
+												(**it).message_text, 
+												cto.color_fg,
+												cto.color_bg,
+												cto.attribute);
 								this->draw_colored_string(cs);
-												
+
 								lines_added++;
 						}	
 				}
@@ -273,21 +281,22 @@ namespace ui{
 				}	
 		}
 
-		bool CursesUI::process_input(){
+		all::GameAction CursesUI::process_input(){
 				bool should_continue = true;
 				int ch = getch();
-				switch (ch){
-
-						case 'q':
-								printw("You have won!\n");
-								should_continue = false;
-								break;
-
-						default:
-								break;
+				auto u_it = imp.ui_action_map.find(ch);
+				if(u_it != imp.ui_action_map.end()){
+						//handle UI only actions here which should not be handled by runner
+						return all::GameAction::NONE;
+				}else{
+						auto g_it = imp.game_action_map.find(ch);
+						if(g_it != imp.game_action_map.end()){
+								all::GameAction ga = g_it->second;
+								return ga;
+						}
 				}
 
-				return should_continue;
+				return all::GameAction::WAIT;
 
 		}
 

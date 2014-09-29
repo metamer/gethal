@@ -15,12 +15,15 @@
 #include "all/GameMessageType.hpp"
 #include "frontend/GameStatusEntry.hpp"
 #include "frontend/GameNumericStatusEntry.hpp"
+#include "all/GameAction.hpp"
 
 namespace runner{
 	class SimpleRunner : public Runner{
 		public:
 				virtual void run_game();
 				SimpleRunner(ui::UI& ui);	
+		private:
+				bool process_gameAction(all::GameAction);
 	};
 
 }

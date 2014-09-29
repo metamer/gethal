@@ -11,7 +11,7 @@
 #include <noteye-curses.h>
 #include <noteye.h>
 #include <iostream>
-
+#include "all/GameAction.hpp" 
 
 namespace ui{
 		extern "C" void errorHandler(int id, const char *b1, const char *b2, int param);
@@ -26,7 +26,7 @@ namespace ui{
 						void finish();
 						void finish(bool for_restart);
 						void restart();
-						bool process_input();
+						all::GameAction process_input();
 				private:
 						std::string noteye_dir;
 						std::string noteye_user_dir;

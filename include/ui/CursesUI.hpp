@@ -16,6 +16,9 @@
 #include "frontend/ColoredString.hpp" 
 #include "frontend/ColorMapperUtil.hpp" 
 #include "ui/CursesColorMap.hpp" 
+#include "frontend/InputMapper.hpp" 
+#include "frontend/UIAction.hpp" 
+#include "all/GameAction.hpp" 
 #include <curses.h>
 #include <iostream>
 #include <algorithm>
@@ -31,7 +34,7 @@ namespace ui{
 						void init();
 						void finish();
 						void restart();
-						bool process_input();
+						all::GameAction process_input();
 				private:
 						void draw_game_map(all::Coordinate c);
 						void create_status_line(std::vector<const frontend::GameStatusEntry*> entry_vec, all::Coordinate start_coord, int len_limit);
@@ -81,6 +84,7 @@ namespace ui{
 
 						CursesColorMap ccm;
 						frontend::ColorMapperUtil cmu;
+						frontend::InputMapper imp;
 		};
 
 }

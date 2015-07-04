@@ -19,13 +19,15 @@ namespace ui{
 				info_spacer_north=1;
 				info_spacer_south=1;
 
+				message_height=1;
+
 				margin_left=1;
 				margin_right=1;
 
-				gamemap_spacer_east=0;
+				gamemap_spacer_north=0;
 				gamemap_spacer_east=0;
 
-				gamemap_spacer_east=1;
+				gamemap_spacer_south=1;
 
 				info_spacer_north=1;
 				info_spacer_south=1;
@@ -257,7 +259,7 @@ namespace ui{
 		void CursesUI::clear_bounds(all::Coordinate c, int height, int width){
 				for(int i = c.x ; i < c.x+height ; i++ ){
 						for(int j = c.y ; j < c.y+width ; j++ ){
-								//todo: add color handling
+								//TODO: add color handling
 								mvaddstr(i,j," ");
 						}
 				}

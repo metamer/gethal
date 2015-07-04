@@ -16,13 +16,14 @@
 #include "frontend/ColoredString.hpp" 
 #include "frontend/ColorMapperUtil.hpp" 
 #include "ui/CursesColorMap.hpp" 
-#include "frontend/InputMapper.hpp" 
 #include "frontend/UIAction.hpp" 
 #include "all/GameAction.hpp" 
+#include "frontend/InputMapper.hpp"
 #include <curses.h>
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <string>
 
 namespace ui{
 		class CursesUI : public UI{

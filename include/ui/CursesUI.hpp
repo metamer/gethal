@@ -36,6 +36,7 @@ namespace ui{
 						void finish();
 						void restart();
 						all::GameAction process_input();
+						virtual ~CursesUI();
 				private:
 						void draw_game_map(all::Coordinate c);
 						void create_status_line(std::vector<const frontend::GameStatusEntry*> entry_vec, all::Coordinate start_coord, int len_limit);

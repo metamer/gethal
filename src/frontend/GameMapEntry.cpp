@@ -3,6 +3,7 @@
 namespace frontend{
 
 		GameMapEntry::GameMapEntry(){
+			symbol=' ';
 		}
 
 		GameMapEntry::GameMapEntry(char symbol='x', GameMapEntryColor color_fg = WHITE, GameMapEntryColor color_bg = BLACK, GameMapEntryAttribute attribute = NORMAL){

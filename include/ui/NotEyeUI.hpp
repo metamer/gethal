@@ -27,6 +27,7 @@ namespace ui{
 						void finish(bool for_restart);
 						void restart();
 						all::GameAction process_input();
+						virtual ~NotEyeUI(){}
 				private:
 						std::string noteye_dir;
 						std::string noteye_user_dir;

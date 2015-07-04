@@ -15,6 +15,7 @@ namespace frontend{
 				public:
 						virtual void set_entry(int row, int col, const GameMapEntry& gm )=0; 
 						virtual const GameMapEntry& get_entry(int row, int col) const =0;
+						virtual ~GameMap(){}
 		};
 }
 #endif

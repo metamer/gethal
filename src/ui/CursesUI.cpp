@@ -57,6 +57,10 @@ namespace ui{
 				imp.game_action_map[KEY_LEFT]= all::GameAction::WEST;
 		}
 
+		CursesUI::~CursesUI(){
+
+		}
+
 		bool CursesUI::recalculate_layout(){
 				if(state_set && ui_initialized){
 

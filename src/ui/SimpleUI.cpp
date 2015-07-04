@@ -2,7 +2,6 @@
 
 namespace ui{
 
-
 		void SimpleUI::set_uiState(const frontend::UIState& uiState){
 				this->uiState = &uiState;
 		}

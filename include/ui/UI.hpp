@@ -19,6 +19,7 @@ namespace ui{
 						virtual void finish() =0;
 						virtual all::GameAction process_input() =0;
 						const frontend::UIState* uiState ;
+						virtual ~UI(){}
 		};
 }
 #endif
